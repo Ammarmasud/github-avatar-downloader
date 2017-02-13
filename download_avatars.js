@@ -12,7 +12,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
   var options = {
     url: 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors',
     headers: {"User-Agent": "GitHub Avatar Downloader - Student Project"}
-  }
+  };
   request(options, cb);
 }
 
@@ -38,7 +38,7 @@ if (process.argv.length !== 4 && process.argv.length !== 5) {
   } else if (process.env.GITHUB_TOKEN) {
     var GITHUB_TOKEN = process.env.GITHUB_TOKEN;
   } else {
-    console.log("Github API key not found. Insert into .env file or input as third command line argument.")
+    console.log("Github API key not found. Insert into .env file or input as third command line argument.");
   }
 
   // Check if avatars directory exists, make it otherwise
