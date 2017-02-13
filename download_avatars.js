@@ -18,9 +18,7 @@ function downloadImageByURL(url, filePath) {
             .pipe(fs.createWriteStream('./' + filePath));
 }
 
-getRepoContributors("jquery", "jquery", function(err, response, body) {
-  // console.log("Errors:", err);
-  // console.log("Response:", response);
+getRepoContributors(process.argv[2], process.argv[3], function(err, response, body) {
   for (var user of JSON.parse(body)) {
     downloadImageByURL(user['avatar_url'], `avatars/${user['login']}.jpg`)
   }
