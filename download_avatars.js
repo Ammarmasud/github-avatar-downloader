@@ -52,9 +52,11 @@ if (process.argv.length !== 4 && process.argv.length !== 5) {
       console.log("Errors:", err);
     }
 
-    // loop through jason to download avatar for each user
+    // loop through json to download avatar for each user
     for (var user of JSON.parse(body)) {
       downloadImageByURL(user['avatar_url'], `avatars/${user['login']}.jpg`);
     }
   });
 }
+
+module.exports = getRepoContributors;
