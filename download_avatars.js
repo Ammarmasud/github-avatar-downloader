@@ -18,12 +18,10 @@ function downloadImageByURL(url, filePath) {
             .pipe(fs.createWriteStream('./' + filePath));
 }
 
-// getRepoContributors("jquery", "jquery", function(err, response, body) {
-//   // console.log("Errors:", err);
-//   // console.log("Response:", response);
-//   for (var user of JSON.parse(body)) {
-//     console.log(user['avatar_url']);
-//   }
-// });
-
-downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
+getRepoContributors("jquery", "jquery", function(err, response, body) {
+  // console.log("Errors:", err);
+  // console.log("Response:", response);
+  for (var user of JSON.parse(body)) {
+    downloadImageByURL(user['avatar_url'], `avatars/${user['login']}.jpg`)
+  }
+});
