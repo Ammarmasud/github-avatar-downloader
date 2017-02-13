@@ -1,7 +1,8 @@
+require('dotenv').config();
 var request = require('request');
 var fs = require('fs');
 var GITHUB_USER = "Ammarmasud";
-var GITHUB_TOKEN = require("./github_token");
+var GITHUB_TOKEN = process.env.GITHUB_TOKEN
 
 console.log('Welcome to the GitHub Avatar Downloader!');
 
