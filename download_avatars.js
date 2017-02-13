@@ -18,8 +18,13 @@ function downloadImageByURL(url, filePath) {
             .pipe(fs.createWriteStream('./' + filePath));
 }
 
-getRepoContributors(process.argv[2], process.argv[3], function(err, response, body) {
-  for (var user of JSON.parse(body)) {
-    downloadImageByURL(user['avatar_url'], `avatars/${user['login']}.jpg`)
-  }
-});
+
+if (process.argv.length !== 4) {
+  console.log("Wrong number of arguments pass. Two arguments required: <Github repo owner> and <Github repo name>");
+} else {
+  getRepoContributors(process.argv[2], process.argv[3], function(err, response, body) {
+    for (var user of JSON.parse(body)) {
+      downloadImageByURL(user['avatar_url'], `avatars/${user['login']}.jpg`)
+    }
+  });
+}
